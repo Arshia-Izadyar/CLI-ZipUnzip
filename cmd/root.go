@@ -4,26 +4,10 @@ Copyright © 2023 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 )
-
-type Todo struct {
-	Name        string `mapstructure:"name"`
-	Description string `mapstructure:"deadline"`
-	Date        string `mapstructure:"date"`
-}
-
-type Todos struct {
-	TodoList []Todo `mapstructure:"todos"`
-}
-
-var todos Todos
-
-var cfgFile string
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -50,41 +34,13 @@ func Execute() {
 }
 
 func init() {
-
-	cobra.OnInitialize(initConfig)
-
 	// Here you will define your flags and configuration settings.
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.go-cli.yaml)")
+	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.go-cli.yaml)")
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-}
-
-// initConfig reads in config file and ENV variables if set.
-func initConfig() {
-
-	err := viper.Unmarshal(&todos)
-	if err != nil {
-		fmt.Fprintln(os.Stderr, "unable to read the config", err)
-	}
-
-	if cfgFile != "" {
-		// Use config file from the flag.
-		viper.SetConfigFile(cfgFile)
-	} else {
-		viper.AddConfigPath(".")
-		viper.SetConfigType("yaml")
-		viper.SetConfigName("todos")
-	}
-
-	viper.AutomaticEnv()
-
-	// If a config file is found, read it in.
-	if err := viper.ReadInConfig(); err == nil {
-		fmt.Fprintln(os.Stderr, "Using config file:", viper.ConfigFileUsed())
-	}
 }
