@@ -1,15 +1,12 @@
-/*
-Copyright © 2023 NAME HERE <EMAIL ADDRESS>
-*/
 package cmd
 
 import (
 	"errors"
 	"fmt"
-	util "go-cli/utils"
 	"os"
 	"os/exec"
 	"path/filepath"
+	util "zipU/utils"
 
 	"github.com/spf13/cobra"
 )

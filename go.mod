@@ -1,4 +1,4 @@
-module go-cli
+module zipU
 
 go 1.20
 
