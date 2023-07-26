@@ -1,9 +1,10 @@
 # CLI-Zip and unzip
 this is a simple go tool to open zipfiles that you download from githun in vscode
 
-## How to use
+## How to 
+*Note*: this will be added to project Sit
 
-1) get the vode
+1) get the code provided
 2) build it
 
        go build
