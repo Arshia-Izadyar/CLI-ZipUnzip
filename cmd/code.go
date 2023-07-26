@@ -28,7 +28,14 @@ var codeCmd = &cobra.Command{
 		return nil
 	},
 	Run: func(cmd *cobra.Command, args []string) {
-		var fileName string = args[0]
+		var fileName string
+
+		if File != "" {
+			fileName = File
+		} else {
+			fileName = args[0]
+		}
+
 		fmt.Println(fileName)
 		fileExist, err := util.FileExists(fileName)
 		if err != nil {
@@ -80,7 +87,7 @@ func init() {
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// codeCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// codeCmd.PersistentFlags().StringVarP("foo", "", "A help for foo")
 	codeCmd.PersistentFlags().StringVarP(&File, "file", "f", "", "A File name to unzip and open in IDE")
 
 	// Cobra supports local flags which will only run when this command
