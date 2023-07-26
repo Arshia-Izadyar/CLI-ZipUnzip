@@ -18,9 +18,10 @@ var File string
 
 // codeCmd represents the code command
 var codeCmd = &cobra.Command{
-	Use:   "code",
-	Short: "",
-	Long:  ``,
+	Use:     "code",
+	Short:   "use code to open inziped file with VsCode",
+	Example: "zipU code {Filename}",
+	Long:    ``,
 	Args: func(cmd *cobra.Command, args []string) error {
 		if File == "" && len(args) < 1 {
 			return errors.New("Add one args")

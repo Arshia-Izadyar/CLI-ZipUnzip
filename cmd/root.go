@@ -11,12 +11,14 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "go-cli",
-	Short: "",
+	Use:   "zipU",
+	Short: "run this to unzip any zip file",
 	Long:  ``,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	// Run: func(cmd *cobra.Command, args []string) { },
+	Version:           "1.0.0",
+	CompletionOptions: cobra.CompletionOptions{DisableDefaultCmd: true},
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
